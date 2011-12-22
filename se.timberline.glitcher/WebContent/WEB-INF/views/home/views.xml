@@ -4,7 +4,7 @@
 	
 <tiles-definitions>
 	<definition name="template" template="/WEB-INF/views/main-template.jsp">
-		<put-attribute name="top" value="/WEB-INF/views/tiles/spittleForm.jsp" />
+		<put-attribute name="top" value="/WEB-INF/views/tiles/glitchForm.jsp" />
 		<put-attribute name="side" value="/WEB-INF/views/tiles/signinsignup.jsp"/>
 	</definition>
 	<definition name="home" extends="template">
