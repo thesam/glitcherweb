@@ -7,6 +7,8 @@
 
 	<description>Example configuration to get you started.</description>
 
+	<context:component-scan base-package="se.timberline.glitcher.persistence"/>
+	
 <!--  
 	<bean id="greeter" class="se.timberline.glitcher.Greeter">
 		<property name="yourName" value="Samuel"/>
@@ -18,9 +20,6 @@
 		<property name="url" value="jdbc:hsqldb:hsql://localhost/glitcher/glitcher"/>
 		<property name="username" value="sa" />
 		<property name="password" value=""/>
-	</bean>
-	
-	<bean id="glitcher" class="se.timberline.glitcher.Glitcher">
 	</bean>
 	
 	<bean id="jpaVendorAdapter"
@@ -36,6 +35,7 @@
 		<property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
 	</bean>
 	
-	<!--  <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/> -->
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
+	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
 
 </beans>

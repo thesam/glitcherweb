@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import se.timberline.glitcher.GlitcherService;
-import se.timberline.glitcher.service.GlitcherServiceImpl;
 import javax.inject.Inject;
 
 @Controller

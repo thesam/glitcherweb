@@ -4,6 +4,7 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import se.timberline.glitcher.domain.Glitcher;
+import se.timberline.glitcher.persistence.JpaGlitcherDao;
 
 // added comment
 
