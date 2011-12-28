@@ -2,18 +2,24 @@ package se.timberline.glitcher.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 public class Glitcher implements Serializable {
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 2L;
 	private long id;
 	private String username;
 	private String password;
 	private String fullname;
+	private List<Glitch> glitches;
 	private Date createdAt;
 	private Date updatedAt;
 	
@@ -33,6 +39,11 @@ public class Glitcher implements Serializable {
 	@Column(length=255)
 	public String getFullname() {
 		return fullname;
+	}
+	@OneToMany(orphanRemoval=true, fetch=FetchType.LAZY, cascade={CascadeType.ALL})
+	@JoinColumn(name="glitcher_id")
+	public List<Glitch> getGlitches() {
+		return glitches;
 	}
 	@Column(insertable=false, updatable=false, name="created_at")
 	public Date getCreatedAt() {
@@ -55,6 +66,9 @@ public class Glitcher implements Serializable {
 	}
 	public void setFullname(String fullname) {
 		this.fullname = fullname;
+	}
+	public void setGlitches(List<Glitch> glitches) {
+		this.glitches = glitches;
 	}
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;

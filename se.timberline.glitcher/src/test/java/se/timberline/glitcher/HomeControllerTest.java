@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.junit.Test;
 
+import se.timberline.glitcher.domain.Glitch;
 import se.timberline.glitcher.mvc.HomeController;
 import se.timberline.glitcher.service.GlitcherServiceImpl;
 
