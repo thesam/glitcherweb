@@ -3,6 +3,8 @@ package se.timberline.glitcher;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import se.timberline.glitcher.domain.Glitcher;
+
 // added comment
 
 public class Main {
