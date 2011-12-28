@@ -1,8 +1,17 @@
 package se.timberline.glitcher;
 
+import java.util.List;
+
+import se.timberline.glitcher.domain.Glitch;
 import se.timberline.glitcher.domain.Glitcher;
 
 public interface GlitcherDao {
+	enum Query {
+		/**
+		 * Find most recent glitches.
+		 */
+		RECENT_GLITCHES;
+	}
 	
 	/**
 	 * Add a new Glitcher to persistence.
@@ -23,4 +32,21 @@ public interface GlitcherDao {
 	 * none was found.
 	 */
 	public Glitcher getGlitcherById(long id);
+	
+	/**
+	 * Get all glitches using a named query. 
+	 * @param q The Query to use.
+	 * @param params Parameters used in the query, if any.
+	 * @return All glitches.
+	 */
+	public List<Glitch> getGlitchesByQuery(Query q, Object... params);
+	
+	/**
+	 * Get a limited number of glitches using the named Query.
+	 * @param q Query to use.
+	 * @param numberOfResults Maximum number of results to return.
+	 * @param params Parameters to query.
+	 * @return Found glitches.
+	 */
+	public List<Glitch> getLimitedGlitchesByQuery(Query q, int numberOfResults, Object... params);
 }
