@@ -7,7 +7,7 @@
 	<h2>A global community of glitches and glitchers.</h2>
 	<h3>Look at what these people are glitching out right now...</h3>
 
-	<o1 class="glitch-list"> 
+	<ol class="glitch-list"> 
 	<c:forEach var="glitch"	items="${glitches}">
 		<s:url value="/glitchers/{glitcherName}" var="glitcher_url">
 			<s:param name="glitcherName" value="${glitch.glitcher.username}" />
@@ -25,5 +25,5 @@
 			</span>
 		</li>
 	</c:forEach>
-	</o1>
+	</ol>
 </div>
