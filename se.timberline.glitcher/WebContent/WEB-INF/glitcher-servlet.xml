@@ -28,11 +28,6 @@
 		</property>
 	</bean>
 
-
-	<bean id="glitcherService" class="se.timberline.glitcher.service.GlitcherServiceImpl">
-
-	</bean>
-
 	<context:component-scan base-package="se.timberline.glitcher.mvc">
 	</context:component-scan>
 

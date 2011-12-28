@@ -15,13 +15,13 @@
 		</s:url>
 		<li>
 			<span class="glitchListImage"> <img src="" width="48"
-				border="0" align="middle"
+				border="0" align="middle" alt="Spitter Avatar"
 				onError="this.src='<s:url value="/resources/images"/>/spitter_avatar.png';" />
 			</span>
-			<span class="glitchListText"> <a href="${glitch_url}"> <c:out
+			<span class="glitchListText"> <a href="${glitcher_url}"> <c:out
 						value="${glitch.glitcher.username}" /></a> - <c:out
-					value="${glitch.text}" /><br /> <small><fmt:formatDate
-						value="${glitch.when}" pattern="hh:mma MMM d, yyyy" /></small>
+					value="${glitch.content}" /><br /> <small><fmt:formatDate
+						value="${glitch.updatedAt}" pattern="hh:mma MMM d, yyyy" /></small>
 			</span>
 		</li>
 	</c:forEach>
