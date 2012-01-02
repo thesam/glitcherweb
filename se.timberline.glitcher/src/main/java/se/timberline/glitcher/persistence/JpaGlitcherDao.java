@@ -16,7 +16,8 @@ import se.timberline.glitcher.domain.Glitcher;
 @Repository("glitcherDao")
 public class JpaGlitcherDao implements GlitcherDao {
 	private final static String RECENT_GLITCHES = "SELECT g FROM Glitch g ORDER BY updatedAt DESC";
-	private final static String GLITCHER_BY_USERNAME = "SELECT g FROM Glitcher g LEFT JOIN FETCH g.glitches WHERE g.username = ?1";
+	private final static String GLITCHER_BY_USERNAME =
+	        "SELECT DISTINCT g FROM Glitcher g LEFT JOIN FETCH g.glitches glitch WHERE g.username = ?1 ORDER BY glitch.updatedAt DESC";
 	
 	@PersistenceContext
 	private EntityManager em;

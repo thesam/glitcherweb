@@ -10,4 +10,8 @@
 	<definition name="home" extends="template">
 		<put-attribute name="content" value="/WEB-INF/views/home.jsp" />
 	</definition>
+	
+	<definition name="glitches/list" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/glitches/list.jsp"/>
+	</definition>
 </tiles-definitions>
