@@ -38,4 +38,13 @@ public class GlitcherServiceImpl implements GlitcherService {
 		dao.saveGlitcher(glitcher);
 	}
 
+    @Override
+    public Glitcher getGlitcher(String username) {
+        List<Glitcher> glitchers = dao.getGlitchersByQuery(GlitcherDao.Query.GLITCHER_BY_USERNAME, username);
+        if (glitchers.size() == 0)
+            return null;
+        else
+            return glitchers.get(0);
+    }
+
 }

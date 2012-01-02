@@ -10,7 +10,15 @@ public interface GlitcherDao {
 		/**
 		 * Find most recent glitches.
 		 */
-		RECENT_GLITCHES;
+		RECENT_GLITCHES,
+		
+		/**
+		 * Find a Glitcher by its username. Parameters:
+		 * <ol>
+		 *    <li>Glitchers username</li>
+		 * </ol>
+		 */
+		GLITCHER_BY_USERNAME;
 	}
 	
 	/**
@@ -32,6 +40,23 @@ public interface GlitcherDao {
 	 * none was found.
 	 */
 	public Glitcher getGlitcherById(long id);
+	
+	/**
+	 * Get all glitchers using a named query.
+	 * @param q The Query to use.
+	 * @param params Parameters used in the query, if any.
+	 * @return All glitchers.
+	 */
+	public List<Glitcher> getGlitchersByQuery(Query q, Object... params);
+	
+	/**
+	 * Get a limited number of glitchers using the named query.
+	 * @param q Query to use.
+	 * @param numberOfResults Maximum number of results.
+	 * @param params Parameters used in the query, if any.
+	 * @return Found glitchers
+	 */
+	public List<Glitcher> getLimitedGlitchersByQuery(Query q, int numberOfResults, Object... params);
 	
 	/**
 	 * Get all glitches using a named query. 

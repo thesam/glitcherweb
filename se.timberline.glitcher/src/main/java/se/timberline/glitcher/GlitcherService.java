@@ -25,5 +25,11 @@ public interface GlitcherService {
 	 * @return A list of recent glitches.
 	 */
 	List<Glitch> getRecentGlitches(int defaultGlitchesPerPage);
-
+	
+	/**
+	 * Get a Glitcher by its username.
+	 * @param username Username of Glitcher to get.
+	 * @return The found Glitcher, or <code>null</code> if none was found.
+	 */
+	Glitcher getGlitcher(String username);
 }

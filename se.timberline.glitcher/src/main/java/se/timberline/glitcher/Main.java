@@ -6,6 +6,7 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import se.timberline.glitcher.domain.Glitch;
+import se.timberline.glitcher.domain.Glitcher;
 
 // added comment
 
@@ -17,9 +18,17 @@ public class Main {
 		
 		GlitcherService service = factory.getBean("glitcherService", GlitcherService.class);
 		List<Glitch> glitches = service.getRecentGlitches(2);
-		for (Glitch g : glitches) {
-			System.out.println("Glitcher: " + g.getGlitcher().getFullname());
-			System.out.println("Content: " + g.getContent());
-		}
+		listGlitches(glitches);
+		
+		Glitcher glitcher = service.getGlitcher("someone");
+		System.out.println("Glitcher fullname: " + glitcher.getFullname());
+		listGlitches(glitcher.getGlitches());
+	}
+	
+	private static void listGlitches(List<Glitch> glitches) {
+	    for (Glitch g : glitches) {
+            System.out.println("Glitcher: " + g.getGlitcher().getFullname());
+            System.out.println("Content: " + g.getContent());
+        }
 	}
 }
