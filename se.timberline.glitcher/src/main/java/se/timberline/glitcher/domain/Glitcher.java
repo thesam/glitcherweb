@@ -13,13 +13,25 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Glitcher implements Serializable {
 	private static final long serialVersionUID = 2L;
 	private long id;
+	
+	@Size(min=3, max=20, message="Username must be between 3 and 20 characters long.")
+	@Pattern(regexp="^[a-zA-Z0-9]+$", message="Username must be alphanumeric with no spaces")
+	@NotNull
 	private String username;
+	
+	@Size(min=6, max=20, message="Username must be between 6 and 20 characters long")
+	@NotNull
 	private String password;
+	
+	@Size(min=3, max=50, message="Your full name must be between 3 and 50 characters long")
 	private String fullname;
 	private List<Glitch> glitches;
 	private Date createdAt;
