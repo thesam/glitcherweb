@@ -18,4 +18,8 @@
 	<definition name="glitchers/edit" extends="template">
 		<put-attribute name="content" value="/WEB-INF/views/glitchers/edit.jsp"/>
 	</definition>
+	
+	<definition name="glitchers/view" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/glitchers/view.jsp"/>
+	</definition>
 </tiles-definitions>

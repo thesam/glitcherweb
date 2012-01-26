@@ -6,6 +6,7 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +17,7 @@ import se.timberline.glitcher.domain.Glitcher;
 @Controller
 @RequestMapping("/glitchers")
 public class GlitcherController {
+    public final static int GLITCHES_ON_SHOW_PAGE = 5;
     private final GlitcherService glitcherService;
     
     @Inject
@@ -43,6 +45,15 @@ public class GlitcherController {
         return "glitchers/edit";
     }
     
+    @RequestMapping(value="/{username}", method=RequestMethod.GET)
+    public String showGlitcherProfile(@PathVariable String username, Model model) {
+        Glitcher glitcher = glitcherService.getGlitcher(username);
+        model.addAttribute(glitcher);
+        model.addAttribute("glitches", glitcher.getGlitches().subList(0,
+                GLITCHES_ON_SHOW_PAGE < glitcher.getGlitches().size() ? GLITCHES_ON_SHOW_PAGE : glitcher.getGlitches().size()));
+        return "glitchers/view";
+    }
+    
     @RequestMapping(method=RequestMethod.POST)
     public String addGlitcherFromForm(@Valid Glitcher glitcher, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -51,6 +62,6 @@ public class GlitcherController {
         
         glitcherService.createGlitcher(glitcher);
         
-        return "redirect:/glitchers";
+        return "redirect:/glitchers/" + glitcher.getUsername();
     }
 }

@@ -3,11 +3,9 @@
 <html>
 <head>
 <title>Glitcher</title>
-<!--
-    <link href="<s:url value="/resources" />/css/spitter.css" 
+    <link href="<s:url value="/resources" />/stylesheets/main-template.css" 
           rel="stylesheet" 
           type="text/css" />
-       -->
 </head>
 
 <body>

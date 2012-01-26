@@ -1,0 +1,8 @@
+div#side {
+	float: right;
+	margin-left: 20px;
+}
+
+div#top {
+	clear: both;
+}
