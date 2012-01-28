@@ -6,3 +6,7 @@ div#side {
 div#top {
 	clear: both;
 }
+
+.error {
+	color: red;
+}

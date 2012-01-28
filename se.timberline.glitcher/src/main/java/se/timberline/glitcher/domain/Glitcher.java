@@ -27,7 +27,7 @@ public class Glitcher implements Serializable {
 	@NotNull
 	private String username;
 	
-	@Size(min=6, max=20, message="Username must be between 6 and 20 characters long")
+	@Size(min=6, max=20, message="Password must be between 6 and 20 characters long")
 	@NotNull
 	private String password;
 	
