@@ -1,7 +1,6 @@
 package se.timberline.glitcher.mvc;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -25,6 +24,7 @@ import se.timberline.glitcher.domain.Glitcher;
 public class GlitcherController {
 	public final static int GLITCHES_ON_SHOW_PAGE = 5;
 	private final GlitcherService glitcherService;
+	private String webRootPath;
 
 	@Inject
 	public GlitcherController(GlitcherService glitcherService) {
@@ -75,7 +75,7 @@ public class GlitcherController {
 		glitcherService.createGlitcher(glitcher);
 		
 		try {
-			if(!image.isEmpty()) {
+			if(image != null && !image.isEmpty()) {
 				validateImage(image);
 				saveImage(glitcher.getId() + ".jpg", image);
 			}
@@ -89,7 +89,7 @@ public class GlitcherController {
 
 	private void saveImage(String filename, MultipartFile image) {
 		try {
-			File file = new File(webRootPath + "/resources/" + filename);
+			File file = new File(webRootPath + filename);
 			writeByteArrayToFile(file, image.getBytes());
 		} catch (IOException e) {
 			throw new ImageUploadException("Unable to save image",e);
