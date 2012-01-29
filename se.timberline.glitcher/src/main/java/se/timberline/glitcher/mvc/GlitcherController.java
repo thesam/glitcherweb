@@ -24,6 +24,7 @@ import se.timberline.glitcher.domain.Glitcher;
 public class GlitcherController {
 	public final static int GLITCHES_ON_SHOW_PAGE = 5;
 	private final GlitcherService glitcherService;
+	//TODO: Inject the real path somehow...
 	private String webRootPath;
 
 	@Inject
