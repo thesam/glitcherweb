@@ -20,6 +20,13 @@ public interface GlitcherService {
 	void saveGlitcher(Glitcher glitcher);
 	
 	/**
+	 * Create a new glitch in persistence.
+	 * @param glitch Glitch to create.
+	 * @param username The username of the Glitcher to create the glitch on.
+	 */
+	void createGlitch(Glitch glitch, String username);
+	
+	/**
 	 * Get recently updated glitches.
 	 * @param defaultGlitchesPerPage Number of glitches to get.
 	 * @return A list of recent glitches.

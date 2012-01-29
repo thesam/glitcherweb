@@ -34,6 +34,12 @@ public interface GlitcherDao {
 	public void saveGlitcher(Glitcher glitcher);
 	
 	/**
+	 * Add a new Glitch to persistence.
+	 * @param glitch Glitch to add.
+	 */
+	public void addGlitch(Glitch glitch);
+	
+	/**
 	 * Get a Glitcher by persistence ID.
 	 * @param id ID.
 	 * @return Glitcher with given ID, or <code>null</code> if
