@@ -56,6 +56,8 @@ public class GlitcherController {
     
     @RequestMapping(method=RequestMethod.POST)
     public String addGlitcherFromForm(@Valid Glitcher glitcher, BindingResult bindingResult) {
+        if (glitcherService.getGlitcher(glitcher.getUsername()) != null)
+            bindingResult.rejectValue("username", "Glitcher.duplicateUsername", "Username has already been taken");
         if (bindingResult.hasErrors()) {
             return "glitchers/edit";
         }

@@ -8,12 +8,6 @@ updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 CONSTRAINT username_unique UNIQUE (username)
 );
 
-CREATE TRIGGER trigger_glitcher_updated_at AFTER UPDATE ON glitcher
-	REFERENCING NEW AS newrow FOR EACH ROW
-	BEGIN ATOMIC
-		SET newrow.updated_at = CURRENT_TIMESTAMP;
-	END;
-
 CREATE TABLE glitch (
 id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 content VARCHAR(4000) NOT NULL,
@@ -23,9 +17,3 @@ updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 CONSTRAINT fk_glitcher_id FOREIGN KEY (glitcher_id)
 	REFERENCES glitcher(id)
 );
-
-CREATE TRIGGER trigger_glitch_updated_at AFTER UPDATE ON glitch
-	REFERENCING NEW AS newrow FOR EACH ROW
-	BEGIN ATOMIC
-		SET newrow.updated_at = CURRENT_TIMESTAMP;
-	END;
