@@ -31,6 +31,11 @@ public class JpaGlitcherDao implements GlitcherDao {
 	public void saveGlitcher(Glitcher glitcher) {
 		em.merge(glitcher);
 	}
+	
+	@Override
+	public void addGlitch(Glitch glitch) {
+	    em.persist(glitch);
+	}
 
 	@Override
 	public Glitcher getGlitcherById(long id) {

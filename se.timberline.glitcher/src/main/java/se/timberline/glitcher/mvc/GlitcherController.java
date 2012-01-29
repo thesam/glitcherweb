@@ -9,9 +9,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import se.timberline.glitcher.GlitcherService;
+import se.timberline.glitcher.domain.Glitch;
 import se.timberline.glitcher.domain.Glitcher;
 
 @Controller
@@ -25,9 +25,9 @@ public class GlitcherController {
         this.glitcherService = glitcherService;
     }
     
-    @RequestMapping(value="/glitches", method=RequestMethod.GET)
+    @RequestMapping(value="/{username}/glitches", method=RequestMethod.GET)
     public String listGlitchesForGlitcher(
-            @RequestParam("glitcher")
+            @PathVariable
             String username,
             Model model) {
         
@@ -36,6 +36,24 @@ public class GlitcherController {
         model.addAttribute(glitcher.getGlitches());
         
         return "glitches/list";
+    }
+    
+    @RequestMapping(value="/{username}/glitches", method=RequestMethod.GET, params="new")
+    public String createGlitch(@PathVariable String username, Model model) {
+        model.addAttribute(glitcherService.getGlitcher(username));
+        model.addAttribute(new Glitch());
+        
+        return "glitches/edit";
+    }
+    
+    @RequestMapping(method=RequestMethod.POST, value="/{username}/glitches")
+    public String addGlitchFromForm(@Valid Glitch glitch, BindingResult bindingResult, @PathVariable String username) {
+        if (bindingResult.hasErrors()) {
+            return "glitches/edit";
+        }
+        
+        glitcherService.createGlitch(glitch, username);
+        return "redirect:/glitchers/" + username;
     }
     
     @RequestMapping(method=RequestMethod.GET, params="new")

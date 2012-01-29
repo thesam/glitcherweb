@@ -37,6 +37,14 @@ public class GlitcherServiceImpl implements GlitcherService {
 	public void saveGlitcher(Glitcher glitcher) {
 		dao.saveGlitcher(glitcher);
 	}
+	
+	@Override
+	@Transactional(propagation=Propagation.REQUIRED, readOnly=false)
+	public void createGlitch(Glitch glitch, String username) {
+	    Glitcher glitcher = this.getGlitcher(username);
+	    glitch.setGlitcher(glitcher);
+	    dao.addGlitch(glitch);
+	}
 
     @Override
     public Glitcher getGlitcher(String username) {
