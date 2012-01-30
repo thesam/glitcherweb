@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import javax.inject.Inject;
+import javax.servlet.ServletContext;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.multipart.MultipartFile;
 
 import se.timberline.glitcher.GlitcherService;
@@ -22,11 +24,10 @@ import se.timberline.glitcher.domain.Glitcher;
 
 @Controller
 @RequestMapping("/glitchers")
-public class GlitcherController {
+public class GlitcherController implements ServletContextAware {
 	public final static int GLITCHES_ON_SHOW_PAGE = 5;
 	private final GlitcherService glitcherService;
-	// TODO: Inject the real path somehow...
-	private String webRootPath;
+	private ServletContext servletContext;
 
 	@Inject
 	public GlitcherController(GlitcherService glitcherService) {
@@ -117,6 +118,7 @@ public class GlitcherController {
 
 	private void saveImage(String filename, MultipartFile image) {
 		try {
+			String webRootPath = servletContext.getRealPath("/resources/") + "/";
 			File file = new File(webRootPath + filename);
 			writeByteArrayToFile(file, image.getBytes());
 		} catch (IOException e) {
@@ -135,6 +137,11 @@ public class GlitcherController {
 		if (!image.getContentType().equals("image/jpeg")) {
 			throw new ImageUploadException("Only JPG images accepted");
 		}
+	}
+
+	@Override
+	public void setServletContext(ServletContext servletContext) {
+		this.servletContext = servletContext;
 	}
 
 }
