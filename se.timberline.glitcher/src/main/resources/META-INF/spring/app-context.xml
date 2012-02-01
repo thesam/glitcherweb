@@ -67,7 +67,7 @@
 		<property name="flowRegistry" ref="flowRegistry"/>
 	</bean>
 	
-	<bean class="org.springframework.webflow.mvc.servelt.FlowHandlerAdapter">
+	<bean class="org.springframework.webflow.mvc.servlet.FlowHandlerAdapter">
 		<property name="flowExecutor" ref="flowExecutor" />
 	</bean>
 </beans>
