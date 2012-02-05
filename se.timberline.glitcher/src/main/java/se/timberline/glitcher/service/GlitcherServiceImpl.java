@@ -54,5 +54,13 @@ public class GlitcherServiceImpl implements GlitcherService {
         else
             return glitchers.get(0);
     }
+    
+    public Glitcher getGlitcher(String username, String password) {
+        List<Glitcher> glitchers = dao.getGlitchersByQuery(GlitcherDao.Query.GLITCHER_BY_USERNAME, username);
+        if (glitchers.size() == 0 || !glitchers.get(0).getPassword().equals(password)) {
+            throw new GlitcherNotFoundException("Glitcher with the given password was not found");
+        }
+        return glitchers.get(0);
+    }
 
 }

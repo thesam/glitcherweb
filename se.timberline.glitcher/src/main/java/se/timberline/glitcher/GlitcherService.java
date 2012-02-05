@@ -39,4 +39,13 @@ public interface GlitcherService {
 	 * @return The found Glitcher, or <code>null</code> if none was found.
 	 */
 	Glitcher getGlitcher(String username);
+	
+	/**
+	 * Get a glitcher by username and password.
+	 * @param username Username
+	 * @param password Password
+	 * @return The found glitcher
+	 * @throws se.timberline.glitcher.service.GlitcherNotFoundException if no glitcher was found.
+	 */
+	Glitcher getGlitcher(String username, String password);
 }

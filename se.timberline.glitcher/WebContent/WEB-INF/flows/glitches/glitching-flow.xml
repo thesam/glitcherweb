@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+	<var name="glitcher" class="se.timberline.glitcher.domain.Glitcher"/>
+	<var name="glitch" class="se.timberline.glitcher.domain.Glitch"/>
+
+	<view-state id="welcome">
+		<transition on="createGlitch" to="identifyGlitcher"/>
+	</view-state>
+	
+	<view-state id="identifyGlitcher">
+		<transition on="continue" to="getGlitcher"/>
+	</view-state>
+	
+	<action-state id="getGlitcher">
+		<evaluate result="glitcher" expression="glitcherService.getGlitcher(requestParameters.username, requestParameters.password)"/>
+		<transition on-exception="se.timberline.glitcher.service.GlitcherNotFoundException" to="notFound"/>
+		<transition to="createGlitch"/>
+	</action-state>
+	
+	<view-state id="createGlitch" model="glitch">
+		<transition on="save" to="saveGlitch"/>
+	</view-state>
+	
+	<action-state id="saveGlitch">
+		<evaluate expression="glitcherService.createGlitch(glitch, glitcher.username)"/>
+		<transition to="finished"/>
+	</action-state>
+	
+	<end-state id="notFound"/>
+	
+	<end-state id="finished"/>
+
+</flow>
