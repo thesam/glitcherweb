@@ -6,6 +6,7 @@
 <title>Glitch Creator</title>
 </head>
 <body>
+	<span style="color: red">${error}</span>
 	<h1>Please, identify yourself!</h1>
 	
 	<sf:form>

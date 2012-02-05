@@ -17,7 +17,9 @@
 	
 	<action-state id="getGlitcher">
 		<evaluate result="glitcher" expression="glitcherService.getGlitcher(requestParameters.username, requestParameters.password)"/>
-		<transition on-exception="se.timberline.glitcher.service.GlitcherNotFoundException" to="notFound"/>
+		<transition on-exception="se.timberline.glitcher.service.GlitcherNotFoundException" to="identifyGlitcher">
+			<set name="flashScope.error" value="'Could not find glitcher with the given password!'"/>
+		</transition>
 		<transition to="createGlitch"/>
 	</action-state>
 	
@@ -30,8 +32,10 @@
 		<transition to="finished"/>
 	</action-state>
 	
-	<end-state id="notFound"/>
-	
-	<end-state id="finished"/>
+	<end-state id="finished">
+		<on-entry>
+			<set name="flashScope.notice" value="'Glitch created successfully!'"></set>
+		</on-entry>	
+	</end-state>
 
 </flow>
