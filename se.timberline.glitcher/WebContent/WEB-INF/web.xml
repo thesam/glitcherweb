@@ -28,4 +28,12 @@
 			classpath:META-INF/spring/app-context.xml
 		</param-value>
 	</context-param>
+	
+	<!--  Spring Security, with filters -->
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>
+			org.springframework.web.filter.DelegatingFilterProxy
+		</filter-class>
+	</filter>
 </web-app>
