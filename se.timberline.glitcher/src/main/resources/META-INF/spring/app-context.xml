@@ -54,4 +54,16 @@
 	</bean>
 	
 	<tx:annotation-driven/>
+	
+	<!-- REMOTE SERVICE CONFIGURATION -->
+	<bean class="org.springframework.remoting.rmi.RmiServiceExporter">
+		<property name="service" ref="glitcherService"/>
+		<property name="serviceName" value="GlitcherService"/>
+		<property name="serviceInterface" value="se.timberline.glitcher.GlitcherService"/>
+	</bean>
+	
+	<bean id="RemoteGlitcherService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+		<property name="serviceUrl" value="rmi://localhost/GlitcherService"/>
+		<property name="serviceInterface" value="se.timberline.glitcher.GlitcherService"/>
+	</bean>
 </beans>
