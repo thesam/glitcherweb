@@ -10,10 +10,11 @@
 
 <body>
 	<div id="container">
+	<div id="top">
 		<a href="<s:url value="/home" />"><img
 			src="<s:url value="/resources" />/images/glitcher_logo.png"
 			border="0" /></a>
-		<div id="top">
+		
 			<t:insertAttribute name="top" />
 		</div>
 		<div id="side">

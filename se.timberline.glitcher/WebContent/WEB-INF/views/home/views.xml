@@ -26,4 +26,6 @@
 	<definition name="glitches/edit" extends="template">
 		<put-attribute name="content" value="/WEB-INF/views/glitches/edit.jsp"/>
 	</definition>
+	
+	<definition name="login" template="/WEB-INF/views/login.jsp"/>
 </tiles-definitions>

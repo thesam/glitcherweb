@@ -10,3 +10,7 @@ div#top {
 .error {
 	color: red;
 }
+
+#logout_paragraph {
+	float: right;
+}
