@@ -1,0 +1,1 @@
+java -cp hsqldb-2.2.8/hsqldb/lib/hsqldb.jar org.hsqldb.server.Server --database.0 file:databases/mydb --dbname.0 xdb
