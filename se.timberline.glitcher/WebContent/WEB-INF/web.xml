@@ -22,9 +22,14 @@
 		<url-pattern>*.hessian</url-pattern>
 	</servlet-mapping>
 	
-		<servlet-mapping>
+	<servlet-mapping>
 		<servlet-name>glitcher</servlet-name>
 		<url-pattern>*.burlap</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>glitcher</servlet-name>
+		<url-pattern>*.httpinvoker</url-pattern>
 	</servlet-mapping>
 	
 	<listener>

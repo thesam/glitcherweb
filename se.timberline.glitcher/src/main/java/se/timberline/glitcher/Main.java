@@ -25,8 +25,12 @@ public class Main {
 //		listGlitches(glitcher.getGlitches());
 		List<GlitcherService> remoteServices = new ArrayList<GlitcherService>();
 		remoteServices.add(factory.getBean("RemoteGlitcherService", GlitcherService.class));
-		remoteServices.add(factory.getBean("RemoteHessianGlitcherService", GlitcherService.class));
-		remoteServices.add(factory.getBean("RemoteBurlapGlitcherService", GlitcherService.class));
+		remoteServices.add(factory.getBean("RemoteHttpInvokerGlitcherService", GlitcherService.class));
+		
+		// FIXME: These do not work right now, but they should work like the ones above.
+//		remoteServices.add(factory.getBean("RemoteHessianGlitcherService", GlitcherService.class));
+//		remoteServices.add(factory.getBean("RemoteBurlapGlitcherService", GlitcherService.class));
+		
 		for (GlitcherService service : remoteServices) {
 			listGlitches(service.getRecentGlitches(10));
 		}

@@ -62,5 +62,12 @@
 			<value>/glitcher.burlap=burlapGlitcherService</value>
 		</property>
 	</bean>
+	
+	<bean id="urlMappingHttpInvoker"
+			class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<value>/glitcher.httpinvoker=httpInvokerGlitcherService</value>
+		</property>
+	</bean>
 
 </beans>
