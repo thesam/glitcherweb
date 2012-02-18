@@ -5,6 +5,8 @@
 
 	<http pattern="/login" security="none" use-expressions="true"></http>
 	<http  pattern="/glitchers" security="none" use-expressions="true"></http>
+	<http  pattern="/glitcher.hessian" security="none" use-expressions="true"></http>
+	<http  pattern="/glitcher.burlap" security="none" use-expressions="true"></http>
 
 	<http auto-config="true" use-expressions="true">
 		<intercept-url pattern="/**" access="hasRole('ROLE_GLITCHER')" />

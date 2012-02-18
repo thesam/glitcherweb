@@ -1,5 +1,6 @@
 package se.timberline.glitcher;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.BeanFactory;
@@ -22,8 +23,13 @@ public class Main {
 //		Glitcher glitcher = service.getGlitcher("someone");
 //		System.out.println("Glitcher fullname: " + glitcher.getFullname());
 //		listGlitches(glitcher.getGlitches());
-		GlitcherService service = factory.getBean("RemoteGlitcherService", GlitcherService.class);
-		listGlitches(service.getRecentGlitches(10));
+		List<GlitcherService> remoteServices = new ArrayList<GlitcherService>();
+		remoteServices.add(factory.getBean("RemoteGlitcherService", GlitcherService.class));
+		remoteServices.add(factory.getBean("RemoteHessianGlitcherService", GlitcherService.class));
+		remoteServices.add(factory.getBean("RemoteBurlapGlitcherService", GlitcherService.class));
+		for (GlitcherService service : remoteServices) {
+			listGlitches(service.getRecentGlitches(10));
+		}
 	}
 	
 	private static void listGlitches(List<Glitch> glitches) {

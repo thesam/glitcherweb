@@ -49,10 +49,17 @@
 		<property name="flowExecutor" ref="flowExecutor" />
 	</bean>
 
-	<bean id="urlMapping"
+	<bean id="urlMappingHessian"
 		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
 			<value>/glitcher.hessian=hessianGlitcherService</value>
+		</property>
+	</bean>
+	
+	<bean id="urlMappingBurlap"
+			class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<value>/glitcher.burlap=burlapGlitcherService</value>
 		</property>
 	</bean>
 
