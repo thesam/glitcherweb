@@ -28,7 +28,6 @@ public class GlitchController {
 		System.err.println("Trying to get glitch with REST! Accept header: " + acceptHeader);
 		Glitch glitch = glitcherService.getGlitchById(id);
 		System.err.println("Got glitch with id: " + glitch.getId());
-		//TODO: Return a proper Glitch.
 		return glitch;
 	}
 	
