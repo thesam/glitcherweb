@@ -11,9 +11,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import se.timberline.glitcher.GlitcherService;
 import se.timberline.glitcher.domain.Glitch;
+import se.timberline.glitcher.domain.Glitches;
 
 @Controller
-@RequestMapping("/rest/glitches")
+@RequestMapping(value="/rest/glitches", headers={"Accept=application/xml"})
 public class GlitchController {
 	private GlitcherService glitcherService;
 	
@@ -22,13 +23,18 @@ public class GlitchController {
 		this.glitcherService = glitcherService;
 	}
 	
-	@RequestMapping(value="/{id}",method=RequestMethod.GET, headers="Accept=application/json")
+	@RequestMapping(value="/{id}",method=RequestMethod.GET)
 	public @ResponseBody Glitch getGlitch(@PathVariable("id") long id, @RequestHeader("Accept") String acceptHeader) {
 		System.err.println("Trying to get glitch with REST! Accept header: " + acceptHeader);
 		Glitch glitch = glitcherService.getGlitchById(id);
 		System.err.println("Got glitch with id: " + glitch.getId());
 		//TODO: Return a proper Glitch.
-		return new Glitch();
+		return glitch;
+	}
+	
+	@RequestMapping(method=RequestMethod.GET)
+	public @ResponseBody Glitches getGlitches( @RequestHeader("Accept") String acceptHeader) {
+	    return new Glitches(glitcherService.getAllGlitches());
 	}
 	
 	/**
@@ -38,11 +44,11 @@ public class GlitchController {
 	 * @param acceptHeader
 	 * @return
 	 */
-	@RequestMapping(value="/{id}",method=RequestMethod.GET)
-	public @ResponseBody String getGlitchContent(@PathVariable("id") long id, @RequestHeader("Accept") String acceptHeader) {
-		System.err.println("Trying to get glitch with REST! Accept header: " + acceptHeader);
-		Glitch glitch = glitcherService.getGlitchById(id);
-		System.err.println("Got glitch with id: " + glitch.getId());
-		return glitch.getContent();
-	}
+//	@RequestMapping(value="/{id}",method=RequestMethod.GET)
+//	public @ResponseBody String getGlitchContent(@PathVariable("id") long id, @RequestHeader("Accept") String acceptHeader) {
+//		System.err.println("Trying to get glitch with REST! Accept header: " + acceptHeader);
+//		Glitch glitch = glitcherService.getGlitchById(id);
+//		System.err.println("Got glitch with id: " + glitch.getId());
+//		return glitch.getContent();
+//	}
 }

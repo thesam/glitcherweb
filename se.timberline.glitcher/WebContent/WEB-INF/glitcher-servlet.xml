@@ -48,7 +48,7 @@
 	<bean class="org.springframework.webflow.mvc.servlet.FlowHandlerAdapter">
 		<property name="flowExecutor" ref="flowExecutor" />
 	</bean>
-
+<!--
 	<bean id="urlMappingHessian"
 		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
@@ -69,5 +69,5 @@
 			<value>/glitcher.httpinvoker=httpInvokerGlitcherService</value>
 		</property>
 	</bean>
-
+-->
 </beans>

@@ -34,6 +34,11 @@ public interface GlitcherService {
 	List<Glitch> getRecentGlitches(int defaultGlitchesPerPage);
 	
 	/**
+	 * @return All glitches in the repository.
+	 */
+	List<Glitch> getAllGlitches();
+	
+	/**
 	 * Get a Glitcher by its username.
 	 * @param username Username of Glitcher to get.
 	 * @return The found Glitcher, or <code>null</code> if none was found.

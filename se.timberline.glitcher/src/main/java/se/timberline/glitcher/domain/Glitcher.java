@@ -13,11 +13,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
+@XmlRootElement
 public class Glitcher implements Serializable {
 	private static final long serialVersionUID = 2L;
 	private long id;
@@ -39,6 +45,7 @@ public class Glitcher implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@XmlTransient
 	public long getId() {
 		return id;
 	}
@@ -47,6 +54,7 @@ public class Glitcher implements Serializable {
 		return username;
 	}
 	@Column(nullable=false, length=127)
+	@XmlTransient
 	public String getPassword() {
 		return password;
 	}
@@ -56,6 +64,7 @@ public class Glitcher implements Serializable {
 	}
 	@OneToMany(orphanRemoval=true, fetch=FetchType.LAZY, cascade={CascadeType.ALL})
 	@JoinColumn(name="glitcher_id")
+	@XmlTransient
 	public List<Glitch> getGlitches() {
 		return glitches;
 	}
@@ -66,6 +75,12 @@ public class Glitcher implements Serializable {
 	@Column(insertable=false, updatable=false, name="updated_at")
 	public Date getUpdatedAt() {
 		return updatedAt;
+	}
+	@XmlID
+	@Transient
+	@XmlAttribute(name="id")
+	public String getXmlId() {
+	    return "/rest/glitchers/" + String.valueOf(getId());
 	}
 	
 	

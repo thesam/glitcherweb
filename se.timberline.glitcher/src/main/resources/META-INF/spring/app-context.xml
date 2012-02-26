@@ -58,51 +58,51 @@
 	<tx:annotation-driven />
 
 	<!-- REMOTE SERVICE CONFIGURATION -->
-	<bean class="org.springframework.remoting.rmi.RmiServiceExporter">
-		<property name="service" ref="glitcherService" />
-		<property name="serviceName" value="GlitcherService" />
-		<property name="serviceInterface" value="se.timberline.glitcher.GlitcherService" />
-	</bean>
+<!-- 	<bean class="org.springframework.remoting.rmi.RmiServiceExporter"> -->
+<!-- 		<property name="service" ref="glitcherService" /> -->
+<!-- 		<property name="serviceName" value="GlitcherService" /> -->
+<!-- 		<property name="serviceInterface" value="se.timberline.glitcher.GlitcherService" /> -->
+<!-- 	</bean> -->
 
-	<bean id="RemoteGlitcherService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
-		<property name="serviceUrl" value="rmi://localhost/GlitcherService" />
-		<property name="serviceInterface" value="se.timberline.glitcher.GlitcherService" />
-	</bean>
+<!-- 	<bean id="RemoteGlitcherService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean"> -->
+<!-- 		<property name="serviceUrl" value="rmi://localhost/GlitcherService" /> -->
+<!-- 		<property name="serviceInterface" value="se.timberline.glitcher.GlitcherService" /> -->
+<!-- 	</bean> -->
 
 	<!-- HESSIAN AND BURLAP SERVICE CONFIGURATION -->
-	<bean id="hessianGlitcherService"
-		class="org.springframework.remoting.caucho.HessianServiceExporter"
-		p:service-ref="glitcherService" p:serviceInterface="se.timberline.glitcher.GlitcherService" />
+<!-- 	<bean id="hessianGlitcherService" -->
+<!-- 		class="org.springframework.remoting.caucho.HessianServiceExporter" -->
+<!-- 		p:service-ref="glitcherService" p:serviceInterface="se.timberline.glitcher.GlitcherService" /> -->
 
-	<bean id="RemoteHessianGlitcherService"
-		class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
-		<property name="serviceUrl"
-			value="http://localhost:8080/se.timberline.glitcher/glitcher.hessian" />
-		<property name="serviceInterface" value="se.timberline.glitcher.GlitcherService" />
-		<property name="overloadEnabled" value="true" />
-	</bean>
+<!-- 	<bean id="RemoteHessianGlitcherService" -->
+<!-- 		class="org.springframework.remoting.caucho.HessianProxyFactoryBean"> -->
+<!-- 		<property name="serviceUrl" -->
+<!-- 			value="http://localhost:8080/se.timberline.glitcher/glitcher.hessian" /> -->
+<!-- 		<property name="serviceInterface" value="se.timberline.glitcher.GlitcherService" /> -->
+<!-- 		<property name="overloadEnabled" value="true" /> -->
+<!-- 	</bean> -->
 
-	<bean id="burlapGlitcherService"
-		class="org.springframework.remoting.caucho.BurlapServiceExporter"
-		p:service-ref="glitcherService" p:serviceInterface="se.timberline.glitcher.GlitcherService" />
+<!-- 	<bean id="burlapGlitcherService" -->
+<!-- 		class="org.springframework.remoting.caucho.BurlapServiceExporter" -->
+<!-- 		p:service-ref="glitcherService" p:serviceInterface="se.timberline.glitcher.GlitcherService" /> -->
 
-	<bean id="RemoteBurlapGlitcherService"
-		class="org.springframework.remoting.caucho.BurlapProxyFactoryBean">
-		<property name="serviceUrl"
-			value="http://localhost:8080/se.timberline.glitcher/glitcher.burlap" />
-		<property name="serviceInterface" value="se.timberline.glitcher.GlitcherService" />
-	</bean>
+<!-- 	<bean id="RemoteBurlapGlitcherService" -->
+<!-- 		class="org.springframework.remoting.caucho.BurlapProxyFactoryBean"> -->
+<!-- 		<property name="serviceUrl" -->
+<!-- 			value="http://localhost:8080/se.timberline.glitcher/glitcher.burlap" /> -->
+<!-- 		<property name="serviceInterface" value="se.timberline.glitcher.GlitcherService" /> -->
+<!-- 	</bean> -->
 
 	<!-- SPRING HTTP INVOKER -->
-	<bean id="httpInvokerGlitcherService"
-		class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter"
-		p:service-ref="glitcherService" p:serviceInterface="se.timberline.glitcher.GlitcherService" />
+<!-- 	<bean id="httpInvokerGlitcherService" -->
+<!-- 		class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter" -->
+<!-- 		p:service-ref="glitcherService" p:serviceInterface="se.timberline.glitcher.GlitcherService" /> -->
 
-	<bean id="RemoteHttpInvokerGlitcherService"
-		class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
-		<property name="serviceUrl"
-			value="http://localhost:8080/se.timberline.glitcher/glitcher.httpinvoker" />
-		<property name="serviceInterface" value="se.timberline.glitcher.GlitcherService" />
-	</bean>
+<!-- 	<bean id="RemoteHttpInvokerGlitcherService" -->
+<!-- 		class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean"> -->
+<!-- 		<property name="serviceUrl" -->
+<!-- 			value="http://localhost:8080/se.timberline.glitcher/glitcher.httpinvoker" /> -->
+<!-- 		<property name="serviceInterface" value="se.timberline.glitcher.GlitcherService" /> -->
+<!-- 	</bean> -->
 
 </beans>

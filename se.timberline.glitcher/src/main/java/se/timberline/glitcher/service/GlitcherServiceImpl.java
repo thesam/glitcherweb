@@ -45,6 +45,11 @@ public class GlitcherServiceImpl implements GlitcherService {
 	    glitch.setGlitcher(glitcher);
 	    dao.addGlitch(glitch);
 	}
+	
+	@Override
+	public List<Glitch> getAllGlitches() {
+	    return dao.getGlitchesByQuery(GlitcherDao.Query.RECENT_GLITCHES);
+	}
 
     @Override
     public Glitcher getGlitcher(String username) {
