@@ -4,10 +4,11 @@
 	http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
 	<http pattern="/login" security="none" use-expressions="true"></http>
-	<http  pattern="/glitchers" security="none" use-expressions="true"></http>
-	<http  pattern="/glitcher.hessian" security="none" use-expressions="true"></http>
-	<http  pattern="/glitcher.burlap" security="none" use-expressions="true"></http>
-	<http  pattern="/glitcher.httpinvoker" security="none" use-expressions="true"></http>
+	<http pattern="/glitchers" security="none" use-expressions="true"></http>
+	<http pattern="/glitcher.hessian" security="none" use-expressions="true"></http>
+	<http pattern="/glitcher.burlap" security="none" use-expressions="true"></http>
+	<http pattern="/glitcher.httpinvoker" security="none" use-expressions="true"></http>
+	<http pattern="/rest/glitches/**" security="none" use-expressions="true"></http>
 
 	<http auto-config="true" use-expressions="true">
 		<intercept-url pattern="/**" access="hasRole('ROLE_GLITCHER')" />

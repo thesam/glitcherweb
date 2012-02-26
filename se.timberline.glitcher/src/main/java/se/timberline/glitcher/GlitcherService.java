@@ -48,4 +48,6 @@ public interface GlitcherService {
 	 * @throws se.timberline.glitcher.service.GlitcherNotFoundException if no glitcher was found.
 	 */
 	Glitcher getGlitcher(String username, String password);
+
+	Glitch getGlitchById(long id);
 }

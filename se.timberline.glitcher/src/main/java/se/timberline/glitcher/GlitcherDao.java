@@ -80,4 +80,6 @@ public interface GlitcherDao {
 	 * @return Found glitches.
 	 */
 	public List<Glitch> getLimitedGlitchesByQuery(Query q, int numberOfResults, Object... params);
+
+	public Glitch getGlitchById(long id);
 }

@@ -63,4 +63,9 @@ public class GlitcherServiceImpl implements GlitcherService {
         return glitchers.get(0);
     }
 
+	@Override
+	public Glitch getGlitchById(long id) {
+		return dao.getGlitchById(id);
+	}
+
 }
