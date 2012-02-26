@@ -18,7 +18,12 @@ public interface GlitcherDao {
 		 *    <li>Glitchers username</li>
 		 * </ol>
 		 */
-		GLITCHER_BY_USERNAME;
+		GLITCHER_BY_USERNAME,
+		
+		/**
+		 * Find all glitchers.
+		 */
+		ALL_GLITCHERS;
 	}
 	
 	/**

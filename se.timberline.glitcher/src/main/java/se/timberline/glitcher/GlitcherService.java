@@ -46,6 +46,12 @@ public interface GlitcherService {
 	Glitcher getGlitcher(String username);
 	
 	/**
+	 * 
+	 * @return All glitchers
+	 */
+	List<Glitcher> getAllGlitchers();
+	
+	/**
 	 * Get a glitcher by username and password.
 	 * @param username Username
 	 * @param password Password

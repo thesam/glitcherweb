@@ -18,6 +18,8 @@ public class JpaGlitcherDao implements GlitcherDao {
 	private final static String RECENT_GLITCHES = "SELECT g FROM Glitch g ORDER BY updatedAt DESC";
 	private final static String GLITCHER_BY_USERNAME =
 	        "SELECT DISTINCT g FROM Glitcher g LEFT JOIN FETCH g.glitches glitch WHERE g.username = ?1 ORDER BY glitch.updatedAt DESC";
+	private final static String ALL_GLITCHERS =
+	        "SELECT g FROM Glitcher g";
 	
 	@PersistenceContext
 	private EntityManager em;
@@ -84,6 +86,9 @@ public class JpaGlitcherDao implements GlitcherDao {
 			break;
 		case GLITCHER_BY_USERNAME:
 		    result = GLITCHER_BY_USERNAME;
+		    break;
+		case ALL_GLITCHERS:
+		    result = ALL_GLITCHERS;
 		    break;
 		}
 		if (result == null)
