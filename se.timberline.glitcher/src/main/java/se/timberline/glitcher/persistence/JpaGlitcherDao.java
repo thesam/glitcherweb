@@ -91,4 +91,9 @@ public class JpaGlitcherDao implements GlitcherDao {
 		
 		return result;
 	}
+
+	@Override
+	public Glitch getGlitchById(long id) {
+		return em.find(Glitch.class, id);
+	}
 }
