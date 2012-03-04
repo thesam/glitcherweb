@@ -199,6 +199,16 @@
 			<artifactId>jaxb-api</artifactId>
 			<version>2.2.6</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-spring</artifactId>
+			<version>5.5.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jms</artifactId>
+			<version>${spring.framework.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>

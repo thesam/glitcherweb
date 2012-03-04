@@ -56,6 +56,27 @@
 	</bean>
 
 	<tx:annotation-driven />
+	
+	<bean id="connectionFactory" class="org.apache.activemq.spring.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="tcp://localhost:61616"/>
+	</bean>
+	
+	<bean id="queue" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg value="glitcher.queue"/>
+	</bean>
+	
+	<bean id="topic" class="org.apache.activemq.command.ActiveMQTopic">
+		<constructor-arg value="glitcher.topic"/>
+	</bean>
+	
+	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="connectionFactory"/>
+		<property name="defaultDestinationName" value="glitcher.queue"/>
+	</bean>
+	
+	<bean id="alertService" class="se.timberline.glitcher.alerts.AlertServiceImpl">
+	</bean>
+	
 
 	<!-- REMOTE SERVICE CONFIGURATION -->
 <!-- 	<bean class="org.springframework.remoting.rmi.RmiServiceExporter"> -->
